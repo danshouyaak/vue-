@@ -32,8 +32,12 @@
       </h1>
       <div class="searchArea">
         <form action="###" class="searchForm">
+<<<<<<< HEAD
           <input
             v-model="keyword"
+=======
+          <input v-model="keyword"
+>>>>>>> origin/master
             type="text"
             id="autocomplete"
             class="input-error input-xxlarge"
@@ -54,14 +58,22 @@
 <script>
 export default {
   name: "",
+<<<<<<< HEAD
   data() {
     return {
       keyword: "",
     };
+=======
+  data(){
+    return{
+      keyword:'',
+    }
+>>>>>>> origin/master
   },
   methods: {
     goSearch() {
       //路由传参
+<<<<<<< HEAD
       if (this.$route.query) {
         //如果有query参数也带过去
         let location = {
@@ -83,6 +95,11 @@ export default {
       this.keyword = ''
     });
   },
+=======
+      this.$router.push({name:"search",params:{keyword :this.keyword||undefined}});
+    },
+  },
+>>>>>>> origin/master
 };
 </script>
 

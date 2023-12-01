@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <!-- 商品分类三级列表 -->
     <typeNav />
@@ -603,4 +604,23 @@ export default {
     }
   }
 }
+=======
+  <div>{{ this.$route.params.keyword }}</div>
+</template>
+  
+  <script>
+export default {
+  name: "Search",
+  data(){
+    return{
+    }
+  },
+  created(){
+    console.log(this.$route.params.keyword);
+  }
+};
+</script>
+  
+  <style>
+>>>>>>> origin/master
 </style>

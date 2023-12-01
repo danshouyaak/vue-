@@ -1,32 +1,28 @@
 <template>
-  <div>
-    <Header></Header>
-
-    <!-- 放置路由出口的地方 -->
-    <router-view></router-view>
-
-    <!-- 在这做判断 是否隐藏 -->
-    <Footer v-show="$route.meta.show"></Footer>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import TypeNav from "./components/TypeNav";
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
-  name: "",
+  name: 'App',
   components: {
-    Header,
-    Footer,
-    TypeNav,
-  },
-  mounted() {
-    // 通知Vuex发请求，获取数据，存储在仓库当中
-    this.$store.dispatch("categoryList");
-  },
-};
+    HelloWorld
+  }
+}
 </script>
 
 <style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>

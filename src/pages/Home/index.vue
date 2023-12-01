@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <!-- 三级联动组件   已经是全局组建了 不需要注册 -->
     <TypeNav></TypeNav>
     <ListContainer></ListContainer>
@@ -8,10 +9,14 @@
     <Like></Like>
     <Floor v-for="(floor,index) in floorList" :key="floor.id" :list="floor"></Floor>
     <Brand></Brand>
+=======
+    我是Home
+>>>>>>> origin/master
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import ListContainer from "@/pages/Home/ListContainer/index.vue";
 import Recommend from "@/pages/Home/Recommend/index.vue";
 import Rank from "@/pages/Home/Rank";
@@ -42,4 +47,13 @@ export default {
 </script>
 
 <style>
+=======
+export default {
+    name:'Home'
+}
+</script>
+
+<style>
+
+>>>>>>> origin/master
 </style>

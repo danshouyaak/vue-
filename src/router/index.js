@@ -1,11 +1,26 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+<<<<<<< HEAD
 import routes from "./routes";
 Vue.use(VueRouter) // 使用插件
 
 //先把VueRouter原型对象的push，先保存一份
 let originPush = VueRouter.prototype.push
 let originReplace = VueRouter.prototype.replace
+=======
+
+Vue.use(VueRouter) // 使用插件
+
+//引入路由组件
+import Home from '@/pages/Home'
+import Login from '@/pages/Login'
+import Register from '@/pages/Register'
+import Search from '@/pages/Search'
+
+
+//先把VueRouter原型对象的push，先保存一份
+let originPush = VueRouter.prototype.push
+>>>>>>> origin/master
 
 //重写originPush原型对象上的push，先保存一份
 //第一参数：告诉原来的push方法，你往哪里来，你往哪里跳转（传递哪些参数）
@@ -28,6 +43,7 @@ VueRouter.prototype.push = function (location, resolve, reject) {
 //         originPush.call(this, location, () => { }, () => { })
 //     }
 // }
+<<<<<<< HEAD
 VueRouter.prototype.push = function (location, resolve, reject) {
     if (resolve && reject) {
         originReplace.call(this, location, resolve, reject)
@@ -45,4 +61,41 @@ export default new VueRouter({
         // y等于代表滚动条再最上方
         return { x: 0, y: 0 }
     }
+=======
+
+//配置路由
+export default new VueRouter({
+    routes: [
+        { path: '/', redirect: '/home', component: Home },
+        {
+            path: '/home',
+            component: Home,
+            meta: {
+                show: true
+            }
+        },
+        {
+            path: '/search/:keyword?',
+            name: "search",
+            component: Search,
+            meta: {
+                show: true
+            }
+        },
+        {
+            path: '/login',
+            component: Login,
+            meta: {
+                show: false
+            }
+        },
+        {
+            path: '/register',
+            component: Register,
+            meta: {
+                show: false
+            }
+        },
+    ]
+>>>>>>> origin/master
 })
