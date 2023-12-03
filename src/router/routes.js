@@ -5,9 +5,29 @@ import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 import Search from '@/pages/Search'
 import Detail from '@/pages/Detail'
+import AddCartSuccess from '@/pages/AddCartSuccess'
+import ShopCart from '@/pages/ShopCart'
 export default
     [
         { path: '/', redirect: '/home', component: Home },
+        {
+            path:'/shopcart',
+            component:ShopCart,
+            name:'shopcart',
+            meta:{
+                show:true
+                // 显示底下的footer
+            }
+        },
+        {
+            path:'/addcartcuccess/:skuNum',
+            component:AddCartSuccess,
+            name:'addcartcuccess',
+            meta:{
+                show:true
+                // 显示底下的footer
+            }
+        },
         {
             path: '/detail/:shui',
             component: Detail,

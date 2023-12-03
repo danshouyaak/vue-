@@ -189,7 +189,7 @@ export default {
     .all {
       width: 210px;
       height: 45px;
-      background-color: #e1251b;
+      background-color: #e11b1b;
       line-height: 45px;
       text-align: center;
       color: #fff;
@@ -291,7 +291,7 @@ export default {
         //             background: #e1251b;
         //         }
         .cur {
-          background: #e1251b;
+          background: #1bc0e1;
         }
       }
     }

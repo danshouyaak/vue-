@@ -5,6 +5,9 @@ import axios from "axios";
 import nprogress from 'nprogress'
 //start:进度条开始 done进度结束
 
+// 在当前模块中引入store
+import store from "@/store";
+
 import 'nprogress/nprogress.css'
 //引入进度条的样式
 
@@ -23,6 +26,12 @@ const requests = axios.create({
 })
 //请求拦截器：再发请求之前，请求拦截器可以检测的到，可以在请求发送出去之前做一些事情
 requests.interceptors.request.use((config) => {
+    if(store.state.detail.uuid_token){
+        // 请求头添加字段(userTempId)
+        config.headers.userTempId = store.state.detail.uuid_token
+    }
+
+
     //config:配置对象，对象里面有一个属性很重要，header请求头
 
     //进度条开始
