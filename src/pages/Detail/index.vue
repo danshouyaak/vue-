@@ -7,7 +7,7 @@
     <section class="con">
       <!-- 导航路径区域 -->
       <div class="conPoin">
-        <span v-show="categoryView.category1Name">{{ categoryView.category1Name }}</span>
+        <span v-show="categoryView && categoryView.category1Name">{{categoryView?categoryView.category1Name : ''}}</span>
       </div>
       <!-- 主要内容区域 -->
       <div class="mainCon">
