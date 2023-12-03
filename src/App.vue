@@ -5,7 +5,7 @@
     <router-view to="/home"></router-view>
 
     <!-- 在这做判断 是否隐藏 -->
-    <!-- <Footer v-show="$route.meta.show"></Footer> -->
+    <Footer v-show="$route.meta.show"></Footer>
   </div>
 </template>
 <script>
@@ -24,4 +24,4 @@ export default {
     this.$store.dispatch("categoryList");
   },
 };
-<script />;
+</script>;
