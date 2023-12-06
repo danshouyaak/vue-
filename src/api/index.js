@@ -33,4 +33,8 @@ export const reqAddOrUpdateShopCart = (skuId,skuNum)=>requests({url:`/cart/addTo
 // 获取购物车列表的接口    /api/cart/cartList
 export const reqCartList = () => requests({url:'/cart/cartList',method:'get'})
 
+// 删除购物车的接口  /api/cart/deleteCart/{skuId}   请求方式 DELETE
+export const reqDeleteCartById = (skuId) =>requests({url:`/cart/deleteCart/${skuId}`,method:'delete'})
 
+// 修改商品选中的接口 /api/cart/checkCart/{skuID}/{isChecked}  GET请求
+export const  reqUpdateCheckedByid = (skuId,isChecked) => requests({url:`/cart/checkCart/${skuId}/${isChecked}`,method:'get'},)
