@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import {reqCartList,reqDeleteCartById,reqUpdateCheckedByid} from '@/api/index'
-=======
-import {reqCartList} from '@/api/index'
->>>>>>> origin/master
 const state = {
     cartList:[]
 }

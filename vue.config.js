@@ -3,6 +3,9 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave:false,
   devServer:{
+    client: {
+      overlay: false,
+    },
     proxy:{
       '/api':{
         target:'http://gmall-h5-api.atguigu.cn',
@@ -11,3 +14,4 @@ module.exports = defineConfig({
     }
   }
 })
+

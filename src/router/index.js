@@ -3,6 +3,9 @@ import VueRouter from "vue-router";
 import routes from "./routes";
 Vue.use(VueRouter) // 使用插件
 
+// 引入store
+import store from "@/store";
+
 //先把VueRouter原型对象的push，先保存一份
 let originPush = VueRouter.prototype.push
 let originReplace = VueRouter.prototype.replace
@@ -38,7 +41,7 @@ VueRouter.prototype.push = function (location, resolve, reject) {
 
 
 //配置路由
-export default new VueRouter({
+let router =  new VueRouter({
     routes,
     // 滚动行为
     scrollBehavior(to, from, savePosition) {
@@ -46,3 +49,47 @@ export default new VueRouter({
         return { x: 0, y: 0 }
     }
 })
+
+// 全局守卫：前置守卫（在路由跳转之间进行判断）
+router.beforeEach(async(to,from,next)=>{
+    // to:可以获取到跳转到想要跳转到那个路由的信息
+    // from:可以获取到那个路由来的信息
+    // next:放行   next('/path')放行到指定路由
+    // console.log(store.state.user.token);
+    let token = store.state.user.token
+
+    // 用户信息
+    let name = store.state.user.userInfo.name
+    // console.log(store.state.user);
+
+
+    if(token){
+        // 用户已经登录  不能回到登录页面
+        if(to.path == '/login'){
+            next('/home')
+        }else{
+            if(name){
+            // 跳转的时候如果有用户信息
+                next()
+            }else{
+                try {
+                // 没有用户信息
+                // 先派发action
+               await store.dispatch('getUserInfo')
+            //    等待成功  放行
+                next()
+                } catch (error) {
+                    // token失效了 获取不了用户信息  从新登录
+                    // 1.清除token
+                    await store.dispatch('userLogout')
+                    next('/login')
+                }
+            }
+        }
+    }else{
+    next()
+    }
+
+})
+
+export default router
