@@ -176,7 +176,7 @@ export default {
       } catch (error) {
         alert(error.message)
       }
-      
+
     },
     async updateAllCartChecked(event){
       try {
