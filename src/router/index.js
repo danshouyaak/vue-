@@ -41,7 +41,7 @@ VueRouter.prototype.push = function (location, resolve, reject) {
 
 
 //配置路由
-let router =  new VueRouter({
+let router = new VueRouter({
     routes,
     // 滚动行为
     scrollBehavior(to, from, savePosition) {
@@ -51,7 +51,7 @@ let router =  new VueRouter({
 })
 
 // 全局守卫：前置守卫（在路由跳转之间进行判断）
-router.beforeEach(async(to,from,next)=>{
+router.beforeEach(async (to, from, next) => {
     // to:可以获取到跳转到想要跳转到那个路由的信息
     // from:可以获取到那个路由来的信息
     // next:放行   next('/path')放行到指定路由
@@ -63,21 +63,21 @@ router.beforeEach(async(to,from,next)=>{
     // console.log(store.state.user);
 
 
-    if(token){
+    if (token) {
         // 用户已经登录  不能回到登录页面
-        if(to.path == '/login'){
+        if (to.path == '/login') {
             next('/home')
-        }else{
-            if(name){
-            // 跳转的时候如果有用户信息
+        } else {
+            if (name) {
+                // 跳转的时候如果有用户信息
                 next()
-            }else{
+            } else {
                 try {
-                // 没有用户信息
-                // 先派发action
-               await store.dispatch('getUserInfo')
-            //    等待成功  放行
-                next()
+                    // 没有用户信息
+                    // 先派发action
+                    await store.dispatch('getUserInfo')
+                    //    等待成功  放行
+                    next()
                 } catch (error) {
                     // token失效了 获取不了用户信息  从新登录
                     // 1.清除token
@@ -86,8 +86,8 @@ router.beforeEach(async(to,from,next)=>{
                 }
             }
         }
-    }else{
-    next()
+    } else {
+        next()
     }
 
 })
